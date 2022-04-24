@@ -16,9 +16,13 @@ function onLoginSubmit(event) {
     console.log(username);
     // greeting.innerText = "hello " + username;
     // backtic
+    paintGreeting(username);    
+    localStorage.setItem(USERNAME_KEY, username);
+}
+
+function paintGreeting(username){
     greeting.innerText = `hello ${username}`;
     greeting.classList.remove(CLASS_HIDDEN);
-    localStorage.setItem(USERNAME_KEY, username);
     
 }
 
@@ -27,12 +31,13 @@ loginForm.addEventListener("submit", onLoginSubmit);
 
 const savedusername = localStorage.getItem(USERNAME_KEY);
 
-
-if (savedusername == "") {
-    loginForm.classList.remove("hidden");
-} 
+if (savedusername === null) {
+    loginForm.classList.remove(CLASS_HIDDEN);
+    loginForm.addEventListener("submit", onLoginSubmit);
+}   
 else {
-    greet.classList.remove("hidden");
+    greeting.classList.add(CLASS_HIDDEN);
+    paintGreeting(savedusername);
 }
 
 // functiondp () 즉시실행s

@@ -1,11 +1,12 @@
 const loginInput = document.querySelector("#login-form input");
 const loginForm  = document.querySelector("#login-form"); 
-const greeting = document.querySelector("#greet");
+const greeting = document.querySelector("h1#greet");
+const clock = document.querySelector("h2#clock");
 
 const CLASS_HIDDEN = "hidden";
 const USERNAME_KEY = "username";
 
-
+//date
 function onLoginSubmit(event) {
     event.preventDefault();
     // console.log(loginInput.value);
@@ -26,6 +27,10 @@ function paintGreeting(username){
     
 }
 
+function getClock(){
+    const date = new Date();
+    clock.innerText = `${date.getHours()}: ${date.getMinutes()}: ${date.getSeconds()}`;
+}
 
 loginForm.addEventListener("submit", onLoginSubmit);
 
@@ -38,6 +43,11 @@ if (savedusername === null) {
 else {
     greeting.classList.add(CLASS_HIDDEN);
     paintGreeting(savedusername);
+    setInterval(getClock, 1000);
 }
+
+
+
+
 
 // functiondp () 즉시실행s

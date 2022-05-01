@@ -4,6 +4,10 @@ const images = [
     "2.jpeg"
 ];
 
+function paintToDo(newTodo){
+    
+
+}
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 
@@ -15,3 +19,4 @@ bgImage.src = `img/${chosenImage}`;
 console.log(bgImage);
 
 document.body.appendChild(bgImage);
+
